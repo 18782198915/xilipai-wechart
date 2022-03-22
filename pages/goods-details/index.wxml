@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="page__bd">
+    <image src="{{goodsDetail.topImg}}" class="goods-image" mode="widthFix" lazy-load="true" />
+    <view class="title">{{goodsDetail.title}}</view>
+    <view class="describe">{{goodsDetail.describe}}</view>
+    <image  wx:for-items="{{goodsDetail.detailImg}}" data-src="{{item}}" src="{{item}}" wx:key="*this" class="goods-image" mode="widthFix" bindtap="previewImg"/>
+  </view>
+  <block>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='goMap'>
+        <view class="weui-cell__hd">
+          <image src="/images/icon/location.png"></image>
+        </view>
+        <view class="weui-cell__bd">四川成都金牛区中央天地三楼307</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <image src="/images/icon/time.png"></image>
+        </view>
+        <view class="weui-cell__bd">营业时间</view>
+        <view class="weui-cell__ft">9:00-18:00</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <image src="/images/icon/tel.png"></image>
+        </view>
+        <view class="weui-cell__bd">联系电话</view>
+        <view class="weui-cell__ft" data-tel="18888888888" bindtap='callPhone'>18888888888</view>
+      </view>
+    </view>
+  </block>
+</view>

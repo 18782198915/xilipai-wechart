@@ -1,0 +1,28 @@
+.goods-image {
+  width:750rpx;
+  display:block;
+}
+.weui-cells {
+  background:none;
+  font-size: 26rpx;
+  line-height: 26rpx;
+}
+.weui-cells image {
+  margin-right: 5px;
+  vertical-align: middle;
+  width:30rpx; 
+  height: 30rpx;
+}
+.title{
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 60rpx;
+  margin-top: 40rpx;
+}
+.describe{
+  margin-top: 40rpx;
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  margin-bottom: 40rpx;
+}
