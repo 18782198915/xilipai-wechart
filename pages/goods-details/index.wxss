@@ -6,6 +6,7 @@
   background:none;
   font-size: 26rpx;
   line-height: 26rpx;
+  padding: 30rpx 0;
 }
 .weui-cells image {
   margin-right: 5px;
@@ -15,14 +16,14 @@
 }
 .title{
   text-align: center;
-  font-size: 32rpx;
+  font-size: 36rpx;
   line-height: 60rpx;
   margin-top: 40rpx;
 }
 .describe{
   margin-top: 40rpx;
-  text-align: center;
-  font-size: 28rpx;
+  font-size: 26rpx;
   line-height: 40rpx;
   margin-bottom: 40rpx;
+  padding: 0 40rpx;
 }

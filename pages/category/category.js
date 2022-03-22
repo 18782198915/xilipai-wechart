@@ -1,6 +1,4 @@
-// pages/category/category.js
-
-const WXAPI = require('../../wxapi/main')
+const jsonList = require('../../utils/json.js')
 
 Page({
 
@@ -8,9 +6,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    categories: [],
+    categories: [
+      { id: 1,
+        name: "全品类喜糖礼盒",
+        scrollId: "s1" },
+      { id: 2,
+        name: "礼盒内搭合集",
+        scrollId: "s2" },
+      { id: 3,
+        name: "伴郎伴郎礼",
+        scrollId: "s3" },
+      { id: 4,
+        name: "白金色系伴手礼",
+        scrollId: "s4" },
+      { id: 5,
+        name: "宝宝",
+        scrollId: "s5" },
+      { id: 6,
+        name: "商务",
+        scrollId: "s6" },
+    ],
     goodsWrap: [],
-    categorySelected: "",
+    categorySelected: "1",
     goodsToView: "",
     categoryToView: "",
   },
@@ -19,14 +36,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.initData();
+    
+    this.setData({
+      goodsWrap: jsonList.goodsList
+    })
+    // this.initData();
   },
   initData() {
 
     let that = this;
     wx.showNavigationBarLoading();
     WXAPI.goodsCategory().then(function(res) {
-
+      console.log(res)
       var categories = [];
       if (res.code == 0) {
         for (var i = 0; i < res.data.length; i++) {
@@ -72,7 +93,7 @@ Page({
       }
       let goodsWrap = [];
 
-
+      console.log(res)
       that.data.categories.forEach((o, index) => {
 
         let wrap = {};
@@ -83,11 +104,7 @@ Page({
 
         wrap.goods = goods;
         res.data.forEach((item, i) => {
-
-          if (item.categoryId == wrap.id) {
-
-            goods.push(item)
-          }
+          goods.push(item)
         })
 
         goodsWrap.push(wrap);
@@ -113,7 +130,7 @@ Page({
     })
   },
   onCategoryClick: function(e) {
-
+    console.log(e)
     let id = e.currentTarget.dataset.id;
     this.categoryClick = true;
     this.setData({
