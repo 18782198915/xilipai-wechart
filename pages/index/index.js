@@ -23,6 +23,14 @@ Page({
         title: '盒子',
         subtitle: '礼盒合集',
         id: 2},
+      { pic: '../../images/product/box/box.jpg',
+        title: '盒子',
+        subtitle: '礼盒合集',
+        id: 2},
+      { pic: '../../images/product/box/box.jpg',
+        title: '盒子',
+        subtitle: '礼盒合集',
+        id: 2},
     ], // 推荐商品
   },
   onShow(){

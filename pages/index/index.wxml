@@ -14,6 +14,16 @@
         </block>
       </view>
     </view>
+    <view class='recommend-title'>商家推荐</view>
+    <view class="goods-container" wx:if="{{goodsRecommend.length > 0}}">
+      <view class="goods-box" wx:for-items="{{goodsRecommend}}" wx:key="index" bindtap="toDetailsTap" data-id="{{item.id}}">
+        <view class="img-box">
+          <image src="{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
+        </view>
+        <view class="goods-title">{{item.title}}</view>
+        <view class="goods-subtitle">{{item.subtitle}}</view>
+      </view>
+    </view>
     <block>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='goMap'>
@@ -39,16 +49,6 @@
         </view>
       </view>
     </block>
-    <view class='recommend-title'>商家推荐</view>
-    <view class="goods-container" wx:if="{{goodsRecommend.length > 0}}">
-      <view class="goods-box" wx:for-items="{{goodsRecommend}}" wx:key="index" bindtap="toDetailsTap" data-id="{{item.id}}">
-        <view class="img-box">
-          <image src="{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
-        </view>
-        <view class="goods-title">{{item.title}}</view>
-        <view class="goods-subtitle">{{item.subtitle}}</view>
-      </view>
-    </view>
   </view>
   <view class='page__ft'>
     
