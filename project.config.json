@@ -1,0 +1,77 @@
+{
+  "appid": "wxfa512f286231cb88",
+  "projectname": "xilipai-wechart",
+  "compileType": "miniprogram",
+  "libVersion": "3.2.4",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "setting": {
+    "coverView": true,
+    "es6": true,
+    "minified": true,
+    "useIsolateContext": false,
+    "enhance": true,
+    "showShadowRootInWxmlPanel": true,
+    "packNpmRelationList": [],
+    "ignoreUploadUnusedFiles": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "home",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品详情页面",
+          "pathName": "pages/goods-details/index",
+          "query": "id=134&inviter_id=456",
+          "scene": 1011
+        },
+        {
+          "name": "商品详情页面",
+          "pathName": "pages/goods-details/index",
+          "query": "id= 6761",
+          "scene": null
+        },
+        {
+          "name": "砍价详情页面",
+          "pathName": "pages/goods-details/index",
+          "query": "id=6765",
+          "scene": null
+        },
+        {
+          "name": "砍价详情页面",
+          "pathName": "pages/goods-details/index",
+          "query": "id=6765&kjJoinUid=701677",
+          "scene": null
+        },
+        {
+          "name": "拼团",
+          "pathName": "pages/goods-details/index",
+          "query": "id=6761",
+          "scene": null
+        },
+        {
+          "name": "面馆商品详情",
+          "pathName": "pages/goods-details/index",
+          "query": "id=125930",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

@@ -5,24 +5,6 @@ Page({
    */
   data: {
     categories: [
-      { id: 1,
-        name: "全品类喜糖礼盒",
-        scrollId: "s1" },
-      { id: 2,
-        name: "礼盒内搭合集",
-        scrollId: "s2" },
-      { id: 3,
-        name: "伴郎伴郎礼",
-        scrollId: "s3" },
-      { id: 4,
-        name: "白金色系伴手礼",
-        scrollId: "s4" },
-      { id: 5,
-        name: "宝宝",
-        scrollId: "s5" },
-      { id: 6,
-        name: "商务",
-        scrollId: "s6" },
     ],
     goodsWrap: [],
     categorySelected: "s0",
@@ -36,7 +18,7 @@ Page({
   onLoad: function(options) {
     const that = this
     wx.request({
-      url: 'http://www.xilipai.cn:3000/api/getAllProduct',
+      url: 'http://47.109.25.12:3000/api/getAllProduct',
       method: 'get',
       success(res) {
         if(res.statusCode == 200){

@@ -12,3 +12,9 @@
   background-color: #F2f2f2;
 }
 text{overflow-wrap:break-word;}
+.loading_box{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
