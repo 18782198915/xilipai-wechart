@@ -33,7 +33,21 @@ Page({
         id: 2},
     ], // 推荐商品
   },
-  onShow(){
+  onLoad(){
+    const that = this
+    wx.request({
+      url: 'http://47.109.25.12:3000/api/getBannerList',
+      method: 'get',
+      success(res) {
+        if(res.statusCode == 200){
+          console.log(res)
+          that.setData({
+            bannerList: res.data.bannerList,
+            goodsRecommend: res.data.hotProduct,
+          });
+        }
+      }
+    })
   },
   swiperchange: function(e) { // banner滚动事件
     this.setData({
@@ -41,22 +55,18 @@ Page({
     })
   },
   toDetailsTap: function(e) {
+    console.log(this.data.goodsRecommend[e.currentTarget.dataset.index])
     wx.navigateTo({
-      url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+      url: "/pages/goods-details/index?info=" + encodeURIComponent(JSON.stringify(this.data.goodsRecommend[e.currentTarget.dataset.index]))
     })
   },
   tapBanner: function(e) {
+    console.log(e)
     if (e.currentTarget.dataset.id != 0) {
       wx.navigateTo({
         url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
       })
     }
-  },
-  onPageScroll(e) {
-    let scrollTop = this.data.scrollTop
-    this.setData({
-      scrollTop: e.scrollTop
-    })
   },
   goMap(e){ // 打开地图
     // address: "浙江杭州西湖区南山路2-1904"

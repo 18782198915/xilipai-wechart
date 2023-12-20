@@ -1,5 +1,3 @@
-const jsonList = require('../../utils/json.js')
-
 Page({
 
   /**
@@ -27,7 +25,7 @@ Page({
         scrollId: "s6" },
     ],
     goodsWrap: [],
-    categorySelected: "1",
+    categorySelected: "s0",
     goodsToView: "",
     categoryToView: "",
   },
@@ -36,103 +34,63 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    const that = this
+    wx.request({
+      url: 'http://www.xilipai.cn:3000/api/getAllProduct',
+      method: 'get',
+      success(res) {
+        if(res.statusCode == 200){
+          console.log(res)
+          res.typeList
+          const goodsWrap = []
+          const categories = res.data.typeList.map((el, index) => {
+            let wrap = {};
+            wrap.id = index + 1;
+            wrap.scrollId = "s" + (index+1);
+            wrap.name = el.type;
+            let goods = [];
     
-    this.setData({
-      goodsWrap: jsonList.goodsList
-    })
-    // this.initData();
-  },
-  initData() {
-
-    let that = this;
-    wx.showNavigationBarLoading();
-    WXAPI.goodsCategory().then(function(res) {
-      console.log(res)
-      var categories = [];
-      if (res.code == 0) {
-        for (var i = 0; i < res.data.length; i++) {
-
-          let item = res.data[i];
-
-          item.scrollId = "s" + item.id;
-          categories.push(item);
-
-          if (i == 0) {
-
-            that.setData({
-              categorySelected: item.scrollId,
+            res.data.allProduct.forEach((item, i) => {
+              goods.push({...item, productType: el.type})
             })
-
-          }
+            wrap.goods = goods;
+            goodsWrap.push(wrap);
+            return { id: index + 1, scrollId: 's' + (index + 1), name: el.type, imgUrl: el.imgUrl}
+          })
+          console.log(goodsWrap)
+          const arr = [...categories]
+          goodsWrap.unshift({ id: 0, scrollId: 's0', name: '全部', goods: arr })
+          categories.unshift({ id: 0, scrollId: 's0', name: '全部' })
+          that.setData({
+            categories: categories,
+            goodsWrap: goodsWrap
+          })
+          console.log(res)
         }
       }
-      that.setData({
-        categories: categories,
-
-      });
-      console.log(categories);
-      that.getGoodsList(0);
-    }).catch((e) => {
-
-      wx.hideNavigationBarLoading();
-    });
-
-  },
-  getGoodsList: function(categoryId, append) {
-
-    let that = this;
-
-    WXAPI.goods({
-      categoryId: "",
-      page: 1,
-      pageSize: 100000
-    }).then(function(res) {
-      if (res.code == 404 || res.code == 700) {
-
-        return
-      }
-      let goodsWrap = [];
-
-      console.log(res)
-      that.data.categories.forEach((o, index) => {
-
-        let wrap = {};
-        wrap.id = o.id;
-        wrap.scrollId = "s" + o.id;
-        wrap.name = o.name;
-        let goods = [];
-
-        wrap.goods = goods;
-        res.data.forEach((item, i) => {
-          goods.push(item)
-        })
-
-        goodsWrap.push(wrap);
-      })
-
-
-
-      that.setData({
-        goodsWrap: goodsWrap,
-      });
-
-      console.log(goodsWrap);
-
-      wx.hideNavigationBarLoading();
-    }).catch((e) => {
-
-      wx.hideNavigationBarLoading();
-    });
+    })
   },
   toDetailsTap: function(e) {
-    wx.navigateTo({
-      url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
-    })
+    console.log(e)
+    const index = e.currentTarget.dataset.index
+    const goodsindex = e.currentTarget.dataset.goodsindex
+    const scrollId = e.currentTarget.dataset.scrollid
+    if (index === 0) {
+      this.setData({
+        categorySelected: scrollId,
+        goodsToView: scrollId,
+        categoryToView: scrollId,
+      })
+    } else {
+      wx.navigateTo({
+        url: "/pages/goods-details/index?info=" + encodeURIComponent(JSON.stringify(this.data.goodsWrap[index].goods[goodsindex]))
+      })
+    }
   },
   onCategoryClick: function(e) {
     console.log(e)
     let id = e.currentTarget.dataset.id;
-    this.categoryClick = true;
+    console.log(id)
     this.setData({
       goodsToView: id,
       categorySelected: id,

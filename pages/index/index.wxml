@@ -4,7 +4,7 @@
       <swiper class="swiper_box" autoplay="true" bindchange="swiperchange">
         <block wx:for="{{bannerList}}" wx:key="index">
           <swiper-item>
-            <image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}" />
+            <image bindtap="tapBanner" data-id="{{item.businessId}}" src="http://47.109.25.12/img/{{item.imgUrl}}" />
           </swiper-item>
         </block>
       </swiper>
@@ -14,14 +14,14 @@
         </block>
       </view>
     </view>
-    <view class='recommend-title'>商家推荐</view>
+    <view class='recommend-title'>当季畅销</view>
     <view class="goods-container" wx:if="{{goodsRecommend.length > 0}}">
-      <view class="goods-box" wx:for-items="{{goodsRecommend}}" wx:key="index" bindtap="toDetailsTap" data-id="{{item.id}}">
-        <view class="img-box">
-          <image src="{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
-        </view>
-        <view class="goods-title">{{item.title}}</view>
-        <view class="goods-subtitle">{{item.subtitle}}</view>
+      <view class="goods-box" wx:for-items="{{goodsRecommend}}" wx:key="index" bindtap="toDetailsTap" data-index="{{index}}">
+          <view class="img-box">
+            <image src="http://47.109.25.12/img/{{item.imgUrl}}" class="image" mode="aspectFill" lazy-load="true" />
+          </view>
+          <!-- <view class="overlay"><view>{{item.subtitle}}</view></view> -->
+          <view class="goods-title">{{item.productName}}</view>
       </view>
     </view>
     <block>

@@ -45,23 +45,25 @@ swiper-item image {
   justify-content: space-between;  
   flex-wrap:wrap;
   box-sizing: content-box;
-  padding: 24rpx;
+  padding: 24rpx 0rpx;
 }
 .goods-box{
-  width: 339rpx;
-  height: 400rpx;
+  width: 374rpx;
+  height: 350rpx;
   overflow: hidden;
-  margin-bottom: 24rpx;
+  margin-bottom: 4rpx;
   border-radius:5px;
+  position: relative;
 }
 .goods-box .img-box{
-  width: 339rpx;
+  width: 374rpx;
   height: 280rpx;
   overflow: hidden;
+  position: relative;
 }
-.goods-box .img-box image{
-   width: 339rpx;
-   height: 280rpx;
+.goods-box image{
+   width: 100%;
+   height: 100%;
 }
 .goods-box .goods-title{
   width: 280rpx;
@@ -69,7 +71,7 @@ swiper-item image {
   white-space: nowrap;
   overflow: hidden;
   font-size: 24rpx;
-  padding: 24rpx 0 0rpx 0;
+  padding-top: 10rpx;
   color:#000;
   margin-left: 24rpx;
 }
@@ -90,4 +92,18 @@ swiper-item image {
   vertical-align: middle;
   width:30rpx; 
   height: 30rpx;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 14px;
 }

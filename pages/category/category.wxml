@@ -1,29 +1,31 @@
 <view class="page">
   <view class="page__bd">
     <view class='content'>
-      <scroll-view class='left' scroll-y="true" scroll-into-view="{{categoryToView}}">
-        <block wx:for="{{categories}}" wx:key="id">
-          <view class="category-item {{categorySelected==item.scrollId?'category-item-active':''}}" data-id='{{item.scrollId}}' id='{{item.scrollId}}' bindtap='onCategoryClick'>
-            <text>{{item.name}}</text>
-          </view>
-        </block>
-      </scroll-view>
-      <scroll-view class='right' scroll-y="true" scroll-into-view="{{goodsToView}}" bindscroll="scroll">
-        <block wx:for="{{goodsWrap}}" wx:key="id">
+      <view class="top_box">
+        <scroll-view scroll-with-animation="true" class='left' scroll-x="true" scroll-into-view="{{categoryToView}}">
+          <block wx:for="{{categories}}" wx:key="id">
+            <view class="category-item {{categorySelected==item.scrollId?'category-item-active':''}}" data-id='{{item.scrollId}}' id='{{item.scrollId}}' bindtap='onCategoryClick'>
+              <text>{{item.name}}</text>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+      <scroll-view scroll-with-animation="true" class='right' scroll-y="true" scroll-into-view="{{goodsToView}}" bindscroll="scroll">
+        <block wx:for="{{goodsWrap}}" wx:key="index">
 
-          <view class="goodsWrap-category" id='{{item.scrollId}}'>
-            <text>{{item.name}}</text>
-          </view>
-          <view class="goods-container" wx:if="{{item.goods}}">
-            <block wx:for="{{item.goods}}" wx:for-item="goods" wx:key="id">
-              <view class="goods-box" bindtap="toDetailsTap" data-id="{{goods.id}}">
-                <view class="img-box">
-                  <image src="{{goods.pic}}" class="image" mode="aspectFill" lazy-load="true" />
+          <view id='{{item.scrollId}}'>
+            <view class="goods-container" wx:if="{{item.goods}}">
+              <block wx:for="{{item.goods}}" wx:for-item="goods" wx:key="index" wx:for-index="childindex">
+                <view class="goods-box" bindtap="toDetailsTap" data-index="{{index}}" data-goodsIndex="{{childindex}}" data-scrollId="{{goods.scrollId}}">
+                  <view class="img-box">
+                    <image src="http://47.109.25.12/img/{{goods.imgUrl}}" class="image" mode="aspectFill" lazy-load="true" />
+                  </view>
+                  <view class="overlay" wx:if="{{item.scrollId === 's0'}}"><view>{{goods.name}}</view></view>
+                  <view class="goods-title" wx:if="{{item.scrollId !== 's0'}}">{{goods.productName}}</view>
+                  <view class="goods-subtitle" wx:if="{{item.scrollId !== 's0'}}">{{goods.productType}}</view>
                 </view>
-                <view class="goods-title">{{goods.title}}</view>
-                <view class="goods-subtitle">{{goods.subtitle}}</view>
-              </view>
-            </block>
+              </block>
+            </view>
           </view>
         </block>
       </scroll-view>

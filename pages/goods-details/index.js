@@ -3,11 +3,12 @@ const jsonList = require('../../utils/json.js')
 Page({
   data: {
     goodsDetail: {},
-    b: 23
+    arrangeStyle: 'width: 374rpx;margin-bottom: 2rpx;height: 496rpx;',
+    showIcon: true,
   },
   onLoad(e) {
     this.setData({
-      goodsDetail: jsonList[e.id]
+      goodsDetail: JSON.parse(decodeURIComponent(e.info))
     })
     console.log(this.data.goodsDetail)
   },
@@ -23,6 +24,32 @@ Page({
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
+    })
+  },
+  goMap(e){ // 打开地图
+    // address: "浙江杭州西湖区南山路2-1904"
+    // latitude: 30.13694
+    // longitude: 120.219925
+    // name: "南山路店"
+    wx.openLocation({
+      latitude: 30.707683,
+      longitude: 104.065929,
+      name: '喜礼派店',
+      address: '四川成都金牛区中央天地三楼307'
+    })
+  },
+  callPhone(e){
+    const tel = e.currentTarget.dataset.tel
+    wx.makePhoneCall({
+      phoneNumber: tel
+    })
+  },
+  clickArrange:function(val){
+    const style1='width: 374rpx;margin-bottom: 2rpx;height: 496rpx;'
+    const style2='width: 750rpx;margin-bottom: 2rpx;height: 902rpx;'
+    this.setData({
+      arrangeStyle: !this.data.showIcon ? style1 : style2,
+      showIcon: !this.data.showIcon
     })
   }
 })

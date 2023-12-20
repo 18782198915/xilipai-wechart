@@ -2,23 +2,22 @@
     "pages": [
         "pages/index/index",
         "pages/goods-details/index",
-        "pages/category/category",
-        "pages/my/index"
+        "pages/category/category"
     ],
     "window": {
         "backgroundTextStyle": "light",
-        "backgroundColor": "#f6f0e3",
-        "navigationBarBackgroundColor": "#f6f0e3",
+        "backgroundColor": "#fff",
+        "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "",
         "navigationBarTextStyle": "black",
         "onReachBottomDistance": 50,
         "navigationStyle": "default"
     },
     "tabBar": {
-        "color": "#6e6d6b",
-        "selectedColor": "#e64340",
+        "color": "#fff",
+        "selectedColor": "#fff",
         "borderStyle": "white",
-        "backgroundColor": "#f6f0e3",
+        "backgroundColor": "#fff",
         "list": [
             {
                 "pagePath": "pages/index/index",
@@ -31,12 +30,6 @@
                 "iconPath": "images/nav/ic_catefory_normal.png",
                 "selectedIconPath": "images/nav/ic_catefory_pressed.png",
                 "text": "分类"
-            },
-            {
-                "pagePath": "pages/my/index",
-                "iconPath": "images/nav/my-off.png",
-                "selectedIconPath": "images/nav/my-on.png",
-                "text": "关于"
             }
         ]
     },
