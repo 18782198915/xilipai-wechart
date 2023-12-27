@@ -9,7 +9,7 @@ Page({
     goodsWrap: [],
     categorySelected: "s0",
     goodsToView: "",
-    categoryToView: "",
+    categoryToView: "s0",
   },
 
   /**
@@ -18,11 +18,10 @@ Page({
   onLoad: function(options) {
     const that = this
     wx.request({
-      url: 'http://47.109.25.12:3000/api/getAllProduct',
+      url: 'http://127.0.0.1:3000/api/getAllProduct',
       method: 'get',
       success(res) {
         if(res.statusCode == 200){
-          console.log(res)
           res.typeList
           const goodsWrap = []
           const categories = res.data.typeList.map((el, index) => {
@@ -39,7 +38,6 @@ Page({
             goodsWrap.push(wrap);
             return { id: index + 1, scrollId: 's' + (index + 1), name: el.type, imgUrl: el.imgUrl}
           })
-          console.log(goodsWrap)
           const arr = [...categories]
           goodsWrap.unshift({ id: 0, scrollId: 's0', name: '全部', goods: arr })
           categories.unshift({ id: 0, scrollId: 's0', name: '全部' })
@@ -47,17 +45,16 @@ Page({
             categories: categories,
             goodsWrap: goodsWrap
           })
-          console.log(res)
         }
       }
     })
   },
   toDetailsTap: function(e) {
-    console.log(e)
     const index = e.currentTarget.dataset.index
     const goodsindex = e.currentTarget.dataset.goodsindex
     const scrollId = e.currentTarget.dataset.scrollid
     if (index === 0) {
+      this.categoryClick = true
       this.setData({
         categorySelected: scrollId,
         goodsToView: scrollId,
@@ -70,9 +67,8 @@ Page({
     }
   },
   onCategoryClick: function(e) {
-    console.log(e)
     let id = e.currentTarget.dataset.id;
-    console.log(id)
+    this.categoryClick = true
     this.setData({
       goodsToView: id,
       categorySelected: id,
@@ -80,7 +76,6 @@ Page({
 
   },
   scroll: function(e) {
-
     if (this.categoryClick){
       this.categoryClick = false;
       return;
