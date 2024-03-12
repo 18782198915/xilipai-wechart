@@ -15,8 +15,11 @@ Page({
   onShow (e){
   },
   previewImg:function(e){
+    console.log(e)
     var imgUrl = e.currentTarget.dataset.src; //获取当前点击的图片
-    var imgArr = this.data.goodsDetail.detailImg;
+    var imgArr = this.data.goodsDetail.imgUrlList.map(el => {
+      return 'http://47.109.25.12/img/'+el
+    });
     console.log()
     wx.previewImage({
       current: imgUrl, //当前图片地址
