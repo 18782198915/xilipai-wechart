@@ -36,7 +36,8 @@ Page({
   onLoad(){
     const that = this
     wx.request({
-      url: 'http://127.0.0.1:3000/api/getBannerList',
+      // url: 'https://47.109.25.12:3000/api/getBannerList',
+      url: 'https://www.xilipai.cn/api/getBannerList',
       method: 'get',
       success(res) {
         if(res.statusCode == 200){

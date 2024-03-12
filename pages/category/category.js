@@ -18,7 +18,7 @@ Page({
   onLoad: function(options) {
     const that = this
     wx.request({
-      url: 'http://127.0.0.1:3000/api/getAllProduct',
+      url: 'https://www.xilipai.cn/api/getAllProduct',
       method: 'get',
       success(res) {
         if(res.statusCode == 200){

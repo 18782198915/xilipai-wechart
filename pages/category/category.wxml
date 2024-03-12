@@ -18,7 +18,7 @@
               <block wx:for="{{item.goods}}" wx:for-item="goods" wx:key="index" wx:for-index="childindex">
                 <view class="goods-box" bindtap="toDetailsTap" data-index="{{index}}" data-goodsIndex="{{childindex}}" data-scrollId="{{goods.scrollId}}">
                   <view class="img-box">
-                    <image src="http://47.109.25.12/img/{{goods.imgUrl}}" class="image" mode="aspectFill" lazy-load="true" />
+                    <image src="https://www.xilipai.cn/img/{{goods.imgUrl}}" class="image" mode="aspectFill" lazy-load="true" />
                   </view>
                   <view class="overlay" wx:if="{{item.scrollId === 's0'}}"><view>{{goods.name}}</view></view>
                   <view class="goods-title" wx:if="{{item.scrollId !== 's0'}}">{{goods.productName}}</view>
