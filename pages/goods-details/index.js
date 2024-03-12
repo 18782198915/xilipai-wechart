@@ -18,7 +18,7 @@ Page({
     console.log(e)
     var imgUrl = e.currentTarget.dataset.src; //获取当前点击的图片
     var imgArr = this.data.goodsDetail.imgUrlList.map(el => {
-      return 'http://47.109.25.12/img/'+el
+      return 'https://www.xilipai.cn/img/'+el
     });
     console.log()
     wx.previewImage({

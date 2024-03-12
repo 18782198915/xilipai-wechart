@@ -1,7 +1,7 @@
 <view class="page">
   <view class="page__bd">
     <view class="goods-image">
-      <image src="http://47.109.25.12/img/{{goodsDetail.imgUrl}}" lazy-load="true" style="width:100%;height: 100%;"/>
+      <image src="https://www.xilipai.cn/img/{{goodsDetail.imgUrl}}" lazy-load="true" style="width:100%;height: 100%;"/>
     </view>
     <view class="look_title_box">
       <!-- <view>预览</view> -->
@@ -15,7 +15,7 @@
       <text>{{tools.filter_N(goodsDetail.remark)}}</text>
     </view>
     <view class="img_list_box">
-      <image  wx:for-items="{{goodsDetail.imgUrlList}}" data-src="http://47.109.25.12/img/{{item}}" src="http://47.109.25.12/img/{{item}}" wx:key="*this" style="{{arrangeStyle}}" mode="scaleToFill" bindtap="previewImg"/>
+      <image  wx:for-items="{{goodsDetail.imgUrlList}}" data-src="https://www.xilipai.cn/img/{{item}}" src="https://www.xilipai.cn/img/{{item}}" wx:key="*this" style="{{arrangeStyle}}" mode="scaleToFill" bindtap="previewImg"/>
     </view>
   </view>
   <block>
