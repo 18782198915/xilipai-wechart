@@ -45,7 +45,8 @@
             <image src="/images/icon/tel.png"></image>
           </view>
           <view class="weui-cell__bd">联系电话</view>
-          <view class="weui-cell__ft" data-tel="18888888888" bindtap='callPhone'>18888888888</view>
+          <view class="weui-cell__ft" data-tel="18140197591" bindtap='callPhone'>18140197591/</view>
+          <view class="weui-cell__ft" data-tel="19980533910" bindtap='callPhone'>19980533910</view>
         </view>
       </view>
     </block>

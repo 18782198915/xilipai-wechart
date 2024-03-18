@@ -42,7 +42,8 @@
     "disableUseStrict": false,
     "minifyWXML": true,
     "showES6CompileOption": false,
-    "useCompilerPlugins": false
+    "useCompilerPlugins": false,
+    "ignoreUploadUnusedFiles": true
   },
   "editorSetting": {
     "tabIndent": "insertSpaces",
