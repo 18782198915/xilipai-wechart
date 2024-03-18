@@ -3,43 +3,21 @@ Page({
   data: {
     swiperCurrent: 0, //当前banner所在位置
     bannerList: [
-      { picUrl: '../../images/product/box/box.jpg',
-        id: 1 }
     ],
     goodsRecommend: [
-      { pic: '../../images/product/box/box.jpg',
-        title: '内搭|香氛类',
-        subtitle: '礼盒合集',
-        id: 'aromatherapy'},
-      { pic: '../../images/product/box/box.jpg',
-        title: '内搭|个人洗护类',
-        subtitle: '礼盒合集',
-        id: 'washProtect'},
-      { pic: '../../images/product/box/box.jpg',
-        title: '盒子',
-        subtitle: '礼盒合集',
-        id: 2},
-      { pic: '../../images/product/box/box.jpg',
-        title: '盒子',
-        subtitle: '礼盒合集',
-        id: 2},
-      { pic: '../../images/product/box/box.jpg',
-        title: '盒子',
-        subtitle: '礼盒合集',
-        id: 2},
-      { pic: '../../images/product/box/box.jpg',
-        title: '盒子',
-        subtitle: '礼盒合集',
-        id: 2},
     ], // 推荐商品
   },
   onLoad(){
     const that = this
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
-      // url: 'https://47.109.25.12:3000/api/getBannerList',
+      // url: 'http://127.0.0.1:3000/api/getBannerList',
       url: 'https://www.xilipai.cn/api/getBannerList',
       method: 'get',
       success(res) {
+        wx.hideLoading()
         if(res.statusCode == 200){
           console.log(res)
           that.setData({
@@ -47,6 +25,9 @@ Page({
             goodsRecommend: res.data.hotProduct,
           });
         }
+      },
+      fail() {
+        wx.hideLoading()
       }
     })
   },

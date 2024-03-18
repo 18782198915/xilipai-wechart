@@ -42,7 +42,8 @@
     "disableUseStrict": false,
     "minifyWXML": true,
     "showES6CompileOption": false,
-    "useCompilerPlugins": false
+    "useCompilerPlugins": false,
+    "ignoreUploadUnusedFiles": true
   },
   "editorSetting": {
     "tabIndent": "insertSpaces",
@@ -56,36 +57,6 @@
           "pathName": "pages/goods-details/index",
           "query": "id=134&inviter_id=456",
           "scene": 1011
-        },
-        {
-          "name": "商品详情页面",
-          "pathName": "pages/goods-details/index",
-          "query": "id= 6761",
-          "scene": null
-        },
-        {
-          "name": "砍价详情页面",
-          "pathName": "pages/goods-details/index",
-          "query": "id=6765",
-          "scene": null
-        },
-        {
-          "name": "砍价详情页面",
-          "pathName": "pages/goods-details/index",
-          "query": "id=6765&kjJoinUid=701677",
-          "scene": null
-        },
-        {
-          "name": "拼团",
-          "pathName": "pages/goods-details/index",
-          "query": "id=6761",
-          "scene": null
-        },
-        {
-          "name": "面馆商品详情",
-          "pathName": "pages/goods-details/index",
-          "query": "id=125930",
-          "scene": null
         }
       ]
     }

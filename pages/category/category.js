@@ -17,10 +17,14 @@ Page({
    */
   onLoad: function(options) {
     const that = this
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: 'https://www.xilipai.cn/api/getAllProduct',
       method: 'get',
       success(res) {
+        wx.hideLoading()
         if(res.statusCode == 200){
           res.typeList
           const goodsWrap = []
@@ -32,7 +36,9 @@ Page({
             let goods = [];
     
             res.data.allProduct.forEach((item, i) => {
-              goods.push({...item, productType: el.type})
+              if (item.productType === el.type) {
+                goods.push({...item, productType: el.type})
+              }
             })
             wrap.goods = goods;
             goodsWrap.push(wrap);
@@ -41,11 +47,15 @@ Page({
           const arr = [...categories]
           goodsWrap.unshift({ id: 0, scrollId: 's0', name: '全部', goods: arr })
           categories.unshift({ id: 0, scrollId: 's0', name: '全部' })
+          console.log(goodsWrap)
           that.setData({
             categories: categories,
             goodsWrap: goodsWrap
           })
         }
+      },
+      fail() {
+        wx.hideLoading()
       }
     })
   },
