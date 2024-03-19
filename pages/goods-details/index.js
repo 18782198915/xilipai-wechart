@@ -1,16 +1,27 @@
-const jsonList = require('../../utils/json.js')
 
 Page({
   data: {
     goodsDetail: {},
     arrangeStyle: 'width: 374rpx;margin-bottom: 2rpx;height: 496rpx;',
     showIcon: true,
+    detailImgList: [],
+    loading: '',
   },
   onLoad(e) {
     this.setData({
       goodsDetail: JSON.parse(decodeURIComponent(e.info))
     })
-    console.log(this.data.goodsDetail)
+    const imgList = this.data.goodsDetail.imgUrlList.map(el => {
+      return {
+        imgUrl: el,
+        show: false
+      }
+    })
+    this.setData({
+      detailImgList: imgList
+    })
+    this.lazyImg(this, this.data.detailImgList, 'detailImgList', '../../images/more/loading.gif')
+    console.log(this.data.goodsDetail, this.data.detailImgList)
   },
   onShow (e){
   },
@@ -54,5 +65,18 @@ Page({
       arrangeStyle: !this.data.showIcon ? style1 : style2,
       showIcon: !this.data.showIcon
     })
-  }
+  },
+  lazyImg: function(_that, data, name, loadingImage) {
+    for (let i = 0, len = data.length; i < len; i++) {
+        wx.createIntersectionObserver().relativeToViewport({
+            bottom: 20
+        }).observe('.item-' + i, (ret) => {
+            ret.intersectionRatio > 0 ? data[i].show = true : '';
+            _that.setData({
+                [name]: data,
+                loading: loadingImage
+            })
+        })
+    }
+}
 })

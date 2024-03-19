@@ -1,0 +1,49 @@
+<!--pages/BottomView.wxml-->
+<view class="page">
+  <block>
+    <view class="bottom_view_box">
+      <view class="bottom_view_line"bindtap='goMap'>
+        <view class="weui-cell__bd">
+          <image src="/images/icon/location.png"></image>四川成都金牛区中央天地三楼307</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">地图></view>
+      </view>
+      <view class="bottom_view_line bottom_view_line_border">
+        <view class="weui-cell__bd">
+          <image src="/images/icon/time.png"></image>营业时间</view>
+        <view class="weui-cell__ft">9:00-18:00</view>
+      </view>
+      <view class="bottom_view_line bottom_view_line_border">
+        <view class="weui-cell__bd"><image src="/images/icon/tel.png"></image>联系电话</view>
+        <view class="weui-cell__bd">
+          <view class="weui-cell__ft" data-tel="19150132864" bindtap='callPhone'>19150132864/</view>
+          <view class="weui-cell__ft" data-tel="19980533910" bindtap='callPhone'>19980533910</view>
+        </view>
+      </view>
+      <view class="bottom_view_line bottom_view_line_border" bindtap='addWechart'>
+        <view class="weui-cell__bd">
+          <image src="/images/icon/wechart.png"/>添加微信</view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="popup-box" wx:if="{{showBottom}}" bindtap="closePopup"></view> 
+<view class="info-bottom" wx:if="{{showBottom}}">
+  <view class="row-top">
+    <view>
+      长按图片可添加客服微信咨询
+    </view>
+    <view class="row-top-del" bindtap="closePopup">
+      <icon class="icon-small" type="clear" size="20"></icon>
+    </view>
+  </view>
+  <view class="row-bottom">
+    <view class="row-bottom_item">
+      <text>客服：糖豆</text>
+      <image src="/images/tangdou.jpg" show-menu-by-longpress mode="aspectFit" width='100px'></image>
+    </view>
+    <view class="row-bottom_item">
+      <text>客服：饼干</text>
+      <image src="/images/binggan.jpg" show-menu-by-longpress mode="aspectFit" width='100px'></image>
+    </view>
+  </view>
+</view>

@@ -15,32 +15,11 @@
       <text>{{tools.filter_N(goodsDetail.remark)}}</text>
     </view>
     <view class="img_list_box">
-      <image  wx:for-items="{{goodsDetail.imgUrlList}}" data-src="https://www.xilipai.cn/img/{{item}}" src="https://www.xilipai.cn/img/{{item}}" wx:key="*this" style="{{arrangeStyle}}" mode="scaleToFill" bindtap="previewImg"/>
+      <view class='item-{{index}}' wx:for="{{detailImgList}}" wx:key="*this.imgUrl">
+        <image data-src="https://www.xilipai.cn/img/{{item.imgUrl}}" wx:key="*this" style="{{arrangeStyle}}" mode="scaleToFill" bindtap="previewImg" src="{{item.show? 'https://www.xilipai.cn/img/'+item.imgUrl : loading}}" class='{{item.show? "imgBox" : "loadingImgBox"}}'/>
+      </view>
     </view>
   </view>
-  <block>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='goMap'>
-        <view class="weui-cell__hd">
-          <image src="/images/icon/location.png"></image>
-        </view>
-        <view class="weui-cell__bd">四川成都金牛区中央天地三楼307</view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">
-          <image src="/images/icon/time.png"></image>
-        </view>
-        <view class="weui-cell__bd">营业时间</view>
-        <view class="weui-cell__ft">9:00-18:00</view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__hd">
-          <image src="/images/icon/tel.png"></image>
-        </view>
-        <view class="weui-cell__bd">联系电话</view>
-        <view class="weui-cell__ft" data-tel="18888888888" bindtap='callPhone'>18888888888</view>
-      </view>
-    </view>
-  </block>
+  <bottomView></bottomView>
 </view>
 <wxs src='../../utils/filter.wxs' module="tools"></wxs>

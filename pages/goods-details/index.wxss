@@ -39,5 +39,8 @@
 .describe{
   font-size: 24rpx;
   line-height: 40rpx;
-  margin: 10rpx 30rpx;
+  margin: 20rpx 30rpx;
+}
+.loadingImgBox {
+  transition: opacity 0.4s linear 0.4s;
 }

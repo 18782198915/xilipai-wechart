@@ -8,7 +8,12 @@ Page({
     ], // 推荐商品
   },
   onLoad(){
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    })
     const that = this
+    console.log(123)
     wx.showLoading({
       title: '加载中',
     })
@@ -27,6 +32,7 @@ Page({
         }
       },
       fail() {
+        console.log('失败')
         wx.hideLoading()
       }
     })
@@ -44,17 +50,13 @@ Page({
   },
   tapBanner: function(e) {
     console.log(e)
-    if (e.currentTarget.dataset.id != 0) {
-      wx.navigateTo({
-        url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
-      })
-    }
+    // if (e.currentTarget.dataset.id != 0) {
+    //   wx.navigateTo({
+    //     url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+    //   })
+    // }
   },
   goMap(e){ // 打开地图
-    // address: "浙江杭州西湖区南山路2-1904"
-    // latitude: 30.13694
-    // longitude: 120.219925
-    // name: "南山路店"
     wx.openLocation({
       latitude: 30.707683,
       longitude: 104.065929,

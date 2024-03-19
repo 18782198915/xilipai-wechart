@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "喜礼派私人订制伴手礼"
+    "navigationBarTitleText": "喜礼派私人订制伴手礼",
+    "usingComponents": {
+        "bottomView": "../BottomView/BottomView"
+    }
 }
